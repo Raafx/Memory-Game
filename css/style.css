@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: rgb(44, 65, 96);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.grid-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 15px;
+    background-color: rgb(100, 117, 133);
+    border-radius: 20px;
+}
+
+.grid-elements {
+    padding: 35px;
+    background-color: rgb(216, 201, 118);
+    border-radius: 10px;
+}
+
+.remove {
+    visibility: hidden;
+    pointer-events: none;
+}
