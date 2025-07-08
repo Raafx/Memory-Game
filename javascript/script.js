@@ -4,9 +4,17 @@ const compareValue = []
 let index;
 let count = 0;
 
+let timerMinute = 0
+let timerSecond = 0;
+let timerMiliSecond = 0;
+const timerElement = document.getElementById("timer")
+console.log(timerElement)
+
 let flipElementBind;
 
-
+let Minuteinterval;     
+let Secondinterval;    
+let MiliSecondinterval;
 
 function toQuizPage(){
     window.location.href = "game.html"
@@ -16,7 +24,7 @@ if(startButton){
 }
 
 function startGame(){
-    console.log("game start")
+    startTimer()
     elementsObjectArray.forEach(element => {
         element.boundFn = flipElement.bind(null, element)
         
@@ -24,6 +32,68 @@ function startGame(){
         
     })
     startGameButton.removeEventListener("click",startGame)
+    
+}
+
+function isFinished(){
+    if(elementsObjectArray.length === 0){
+        clearInterval(Minuteinterval)
+        clearInterval(Secondinterval)
+        clearInterval(MiliSecondinterval)
+    }
+}
+
+function timerMinuteCounter(){
+    timerMinute++
+    displayMinuteTimer(timerMinute)
+    
+}
+function timerSecondCounter(){
+    timerSecond++
+    if(timerSecond === 60){
+        timerSecond = 0
+    }
+    
+    displaySecondTimer(timerSecond)
+}
+function timerMiliSecondCounter(){
+    isFinished()
+    timerMiliSecond++
+    if(timerMiliSecond === 100){
+        timerMiliSecond = 0
+    }
+    
+    displayMiliSecondTimer(timerMiliSecond)
+}
+
+function displayMinuteTimer(timer){
+    if(timer < 10){
+        document.getElementById("minute").innerText = `0${timer}`
+    } else {
+        document.getElementById("minute").innerText = `${timer}`
+    }
+    
+}
+function displaySecondTimer(timer){
+    if(timer < 10){
+        document.getElementById("second").innerText = `0${timer}`
+    } else {
+        document.getElementById("second").innerText = `${timer}`
+    }
+}
+function displayMiliSecondTimer(timer){
+    if(timer < 10){
+        document.getElementById("milisecond").innerText = `0${timer}`
+    } else {
+        document.getElementById("milisecond").innerText = `${timer}`
+    }
+}
+
+
+function startTimer(){
+    Minuteinterval = setInterval(timerMinuteCounter,60000)
+    Secondinterval = setInterval(timerSecondCounter,1000)
+    MiliSecondinterval = setInterval(timerMiliSecondCounter,1)
 }
 
 if(startGameButton){
@@ -63,7 +133,6 @@ function flipElement(e){
                 setTimeout(() => {
                     elementsObjectArray.forEach((element,index) => {
                         if(element.position === compareValue[0].position){
-                            console.log("Jalan")
                             element.element.classList.toggle("remove")
                             elementsObjectArray.splice(index,1)
 
@@ -81,19 +150,14 @@ function flipElement(e){
             }
         }
         
-        elementsObjectArray.forEach((element) => {
-            
+        elementsObjectArray.forEach((element) => { 
             element.element.removeEventListener("click",element.boundFn)
-            
-        
         })
         
         count = 0;
         setTimeout(flipElementBack,800)
     }
-
-    
-    
+    console.log(`length: ${elementsObjectArray.length}`)
 }
 
 if(window.location.pathname === "/game.html" ){

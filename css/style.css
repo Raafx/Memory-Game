@@ -36,7 +36,7 @@ div#title img{
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 15px;
-    background-color: rgb(100, 117, 133);
+    background-color: rgb(107, 100, 133);
     border-radius: 20px;
 }
 
@@ -69,6 +69,16 @@ button#start-button:active,button#start-game:active {
     color: rgb(173, 160, 223);
     background-color: rgb(119, 108, 50);
     transform: scale(0.9,0.9);
+}
+
+div#timer {
+    display: flex;
+    background-color: rgb(107, 100, 133);
+    color: aliceblue;
+    padding: 10px 80px;
+    font-size: 45px;
+    border-radius: 15px 15px 0px 0px;
+    
 }
 
 .remove {
