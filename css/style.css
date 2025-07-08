@@ -11,10 +11,24 @@ body {
     background-size: cover;
 }
 
+.creator {
+    width: 100%;
+    text-align: center;
+    color: aliceblue;
+    font-size: 18px;
+    padding: 5px;
+    
+}
+
+.creator a {
+    text-decoration: none;
+    color: rgb(236, 205, 67);
+}
+
 div#title {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 div#title img{
@@ -48,7 +62,7 @@ div#title img{
 
 button#start-button,button#start-game {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 20px 80px;
+    padding: 5px 80px;
     background-color: rgb(217, 193, 86);
     border-radius: 15px;
     border: 0px;
@@ -58,6 +72,16 @@ button#start-button,button#start-game {
     transition: all 0.05s;
     margin-block: 20px;
 }
+
+button#start-button {
+    margin-block: 10px;
+}
+
+button#start-button img,button#start-game img {
+    width: 150px;
+    
+}
+
 
 button#start-button:hover,button#start-game:hover {
     cursor: pointer;
@@ -84,5 +108,38 @@ div#timer {
 .remove {
     visibility: hidden;
     pointer-events: none;
+}
+
+@media only screen and (max-width:600px){
+    body {
+        overflow: hidden;
+    }
+    .container {
+        overflow-y: hidden;
+    }
+
+    div#title img{
+        width: 450px;
+    }
+
+    .grid-container {
+        grid-template-columns: auto auto auto;
+        gap: 9px;
+    }
+
+    .grid-elements {
+        padding: 40px;
+        
+    }
+
+    div#timer {
+        font-size: 30px;
+        padding: 10px 50px;
+    }
+
+    button#start-button img,button#start-game img {
+        width: 100px;
+    
+    }
 }
 
