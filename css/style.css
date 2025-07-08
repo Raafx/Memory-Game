@@ -111,11 +111,10 @@ div#timer {
 }
 
 @media only screen and (max-width:600px){
-    body {
-        overflow: hidden;
-    }
     .container {
-        overflow-y: hidden;
+        
+        height: 600px;
+        overflow-x: hidden;
     }
 
     div#title img{
