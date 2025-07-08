@@ -6,11 +6,26 @@
 }
 
 body {
-    background-color: rgb(44, 65, 96);
+    background: linear-gradient(to bottom, rgba(13, 3, 31, 0.7),rgba(13, 3, 31, 0.7)),url(../images/Background.png);
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+div#title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+div#title img{
+    width: 600px;
+    
 }
 
 .container {
+    
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -19,19 +34,45 @@ body {
 .grid-container {
     padding: 20px;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     gap: 15px;
     background-color: rgb(100, 117, 133);
     border-radius: 20px;
 }
 
 .grid-elements {
-    padding: 35px;
-    background-color: rgb(216, 201, 118);
+    padding: 50px;
+    background-color: rgb(217, 193, 86);
     border-radius: 10px;
+}
+
+button#start-button,button#start-game {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px 80px;
+    background-color: rgb(217, 193, 86);
+    border-radius: 15px;
+    border: 0px;
+    color: rgb(78, 71, 107);
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.05s;
+    margin-block: 20px;
+}
+
+button#start-button:hover,button#start-game:hover {
+    cursor: pointer;
+    background-color: rgb(173, 162, 100);
+    transform: scale(1.05,1.05);
+}
+button#start-button:active,button#start-game:active {
+    cursor: pointer;
+    color: rgb(173, 160, 223);
+    background-color: rgb(119, 108, 50);
+    transform: scale(0.9,0.9);
 }
 
 .remove {
     visibility: hidden;
     pointer-events: none;
 }
+
