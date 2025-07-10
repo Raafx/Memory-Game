@@ -16,6 +16,8 @@ let Minuteinterval;
 let Secondinterval;    
 let MiliSecondinterval;
 
+
+
 function toQuizPage(){
     window.location.href = "game.html"
 }
@@ -28,6 +30,7 @@ function startGame(){
     elementsObjectArray.forEach(element => {
         element.boundFn = flipElement.bind(null, element)
         
+        
         element.element.addEventListener("click",element.boundFn)
         
     })
@@ -37,6 +40,16 @@ function startGame(){
 
 function isFinished(){
     if(elementsObjectArray.length === 0){
+        let timerElement = document.getElementById("timer")
+        timerElement.style.color = "rgb(217, 193, 86)"
+        timerElement.style.transition = "transform 0.05s"
+        timerElement.style.transform = "scale(1.3,1.3)"
+        setTimeout(() => {
+            timerElement.style.transition = "transform 0.1s"
+            timerElement.style.transform = "scale(1.05,1.05)"
+        },100)
+        
+    
         clearInterval(Minuteinterval)
         clearInterval(Secondinterval)
         clearInterval(MiliSecondinterval)
@@ -103,10 +116,20 @@ if(startGameButton){
 
 function flipElementBack(){
     console.log("flipElementBack jalan")
-    compareValue.splice(0,2)
-    elementsObjectArray.forEach(element => {
-        element.element.style.backgroundColor = "rgb(217, 193, 86)"
+    
+    
+    compareValue.forEach((elementObject) => {
         
+        elementObject.element.style.transform = "rotateY(360deg)"
+        setTimeout(() => {
+            elementObject.element.style.backgroundImage = "none"
+            elementObject.element.style.backgroundColor = "rgb(217, 193, 86)"
+        },100)
+    })
+    
+    compareValue.splice(0,2)
+    
+    elementsObjectArray.forEach(element => {
         element.element.addEventListener("click",element.boundFn)
         
     })
@@ -123,24 +146,39 @@ function flipElement(e){
     
     console.log(e)
     
-    e.element.style.backgroundColor = e.value;
+    e.element.style.transform = "rotateY(180deg)"
+    
+    setTimeout(() => {
+        e.element.style.backgroundColor = "white"
+        e.element.style.backgroundImage = `url(${e.value})`
+    
+    },100)
+    
     console.log(count)
     if(count >= 2){
         if(compareValue[0].position === compareValue[1].position){
-            setTimeout(flipElementBack,500)
-        } else {
+            setTimeout(e.boundFnBack,500)
+        } 
+        else {
             if(compareValue[0].value === compareValue[1].value){
                 setTimeout(() => {
                     elementsObjectArray.forEach((element,index) => {
                         if(element.position === compareValue[0].position){
+                            element.element.style.transform = "scale(0.01,0.01)"
+                            setTimeout(() =>
                             element.element.classList.toggle("remove")
+                            ,300)
+                            
                             elementsObjectArray.splice(index,1)
 
                         }
                     })
                     elementsObjectArray.forEach((element,index) => {
                         if(element.position === compareValue[1].position){
+                            element.element.style.transform = "scale(0.01,0.01)"
+                            setTimeout(() =>
                             element.element.classList.toggle("remove")
+                            ,300)
                             elementsObjectArray.splice(index,1)
                         }
                     })
@@ -155,6 +193,7 @@ function flipElement(e){
         })
         
         count = 0;
+        
         setTimeout(flipElementBack,800)
     }
     console.log(`length: ${elementsObjectArray.length}`)
@@ -165,6 +204,6 @@ if(window.location.pathname === "/game.html" ){
         
 }
 
-
+console.log(elementsObjectArray)
 
 

@@ -58,6 +58,10 @@ div#title img{
     padding: 50px;
     background-color: rgb(217, 193, 86);
     border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    transition: transform 0.5s;
 }
 
 button#start-button,button#start-game {
@@ -96,12 +100,14 @@ button#start-button:active,button#start-game:active {
 }
 
 div#timer {
+    margin-block: 20px;
     display: flex;
-    background-color: rgb(107, 100, 133);
+    background-color: rgb(66, 58, 97);
     color: aliceblue;
     padding: 10px 80px;
     font-size: 45px;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px;
+    border: 3px rgb(221, 194, 56) solid;
     
 }
 
@@ -113,7 +119,7 @@ div#timer {
 @media only screen and (max-width:600px){
     .container {
         
-        height: 600px;
+        
         overflow-x: hidden;
     }
 
