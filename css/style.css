@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom, rgba(13, 3, 31, 0.7),rgba(13, 3, 31, 0.7)),url(../images/Background.png);
+    background: linear-gradient(to bottom, rgba(13, 3, 31, 0.7),rgba(13, 3, 31, 0.7)),url(../images/Background.webp);
     background-repeat: repeat;
     background-size: cover;
 }
