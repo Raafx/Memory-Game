@@ -11,6 +11,10 @@ function ElementsObjectTemplate(element,value,position){
 
 const value = ["./images/1.webp","./images/2.webp","./images/3.webp","./images/4.webp","./images/5.webp","./images/6.webp","./images/1.webp","./images/2.webp","./images/3.webp","./images/4.webp","./images/5.webp","./images/6.webp"]
 
+value.forEach(src => {
+    src = new Image(src)
+})
+
 const valueLength = value.length
 
 const randomValue = []
