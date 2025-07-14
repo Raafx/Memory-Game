@@ -20,6 +20,7 @@ let MiliSecondinterval;
 
 function toQuizPage(){
     window.location.href = "game.html"
+    preloadCardImages(value)
 }
 if(startButton){
     startButton.addEventListener("click",toQuizPage)
