@@ -13,8 +13,8 @@ const value = ["./images/1.webp","./images/2.webp","./images/3.webp","./images/4
 
 function preloadCardImages(imagesArray){
     imagesArray.forEach(images => {
-        images = new Image(images)
-        
+        const newImg = new Image()
+        newImg.images = images
     })
 }
 
