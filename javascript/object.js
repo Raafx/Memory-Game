@@ -18,7 +18,7 @@ function preloadCardImages(imagesArray){
     })
 }
 
-
+preloadCardImages(value)
 
 const valueLength = value.length
 
