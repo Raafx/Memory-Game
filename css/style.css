@@ -84,6 +84,7 @@ dialog#result-dialog {
     border-radius: 20px;
     box-shadow: 1px 1px 1000px black;
     text-align: center;
+    will-change: all;
     transition: all 0.2s;
     transform: scale(0.1,0.1);
 }
