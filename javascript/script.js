@@ -4,6 +4,10 @@ const compareValue = []
 let index;
 let count = 0;
 
+const minuteElement = document.getElementById("minute")
+const secondElement = document.getElementById("second")
+const miliSecondElement = document.getElementById("milisecond")
+
 let timerMinute = 0
 let timerSecond = 0;
 let timerMiliSecond = 0;
@@ -16,7 +20,13 @@ let Minuteinterval;
 let Secondinterval;    
 let MiliSecondinterval;
 
+const dialogResult = document.getElementById("result-dialog");
 
+
+const timeResult = document.getElementById("time-result")
+
+const  menuButton = document.getElementById("back-to-menu")
+const  retryButton = document.getElementById("retry-game")
 
 function toQuizPage(){
     window.location.href = "game.html"
@@ -39,6 +49,8 @@ function startGame(){
     
 }
 
+
+
 function isFinished(){
     if(elementsObjectArray.length === 0){
         let timerElement = document.getElementById("timer")
@@ -49,6 +61,28 @@ function isFinished(){
             timerElement.style.transition = "transform 0.1s"
             timerElement.style.transform = "scale(1.05,1.05)"
         },100)
+        setTimeout(() => {
+            
+            dialogResult.showModal()
+            dialogResult.style.transform = 'scale(1.1,1.1)'
+
+            timeResult.textContent = `${minuteElement.innerText}:${secondElement.innerText}:${miliSecondElement.innerText}`
+            timeResult.style.color = 'rgb(217, 193, 86)'
+            
+
+
+            menuButton.addEventListener("click", () => {
+                window.location.href = "index.html"
+            })
+            retryButton.addEventListener("click", () => {
+                window.location.href = "game.html"
+            })
+
+        },1000)
+
+        setTimeout(() => {
+            dialogResult.style.transform = 'scale(1,1)'
+        },1200)
         
     
         clearInterval(Minuteinterval)
@@ -82,24 +116,24 @@ function timerMiliSecondCounter(){
 
 function displayMinuteTimer(timer){
     if(timer < 10){
-        document.getElementById("minute").innerText = `0${timer}`
+        minuteElement.innerText = `0${timer}`
     } else {
-        document.getElementById("minute").innerText = `${timer}`
+        minuteElement.innerText = `${timer}`
     }
     
 }
 function displaySecondTimer(timer){
     if(timer < 10){
-        document.getElementById("second").innerText = `0${timer}`
+        secondElement.innerText = `0${timer}`
     } else {
-        document.getElementById("second").innerText = `${timer}`
+        secondElement.innerText = `${timer}`
     }
 }
 function displayMiliSecondTimer(timer){
     if(timer < 10){
-        document.getElementById("milisecond").innerText = `0${timer}`
+        miliSecondElement.innerText = `0${timer}`
     } else {
-        document.getElementById("milisecond").innerText = `${timer}`
+        miliSecondElement.innerText = `${timer}`
     }
 }
 

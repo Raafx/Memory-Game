@@ -11,6 +11,12 @@ body {
     background-size: cover;
 }
 
+:root {
+    --button-color: rgb(217, 193, 86);
+    --button-color-hover: rgb(173, 162, 100);
+    --button-color-active: rgb(119, 108, 50);
+}
+
 .creator {
     width: 100%;
     text-align: center;
@@ -62,6 +68,71 @@ div#title img{
     height: 50px;
     background-size: cover;
     transition: transform 0.5s;
+}
+
+.display-result {
+    background-color: rgb(223, 17, 17);
+    
+}
+
+dialog#result-dialog {
+    margin:auto auto;
+    width: 400px;
+    padding: 30px 50px 50px 50px;
+    background-color: rgb(49, 27, 78);
+    border: 5px var(--button-color) solid;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1000px black;
+    text-align: center;
+    transition: all 0.2s;
+    transform: scale(0.1,0.1);
+}
+
+dialog#result-dialog h1 img{
+    position: relative;
+    width: 100%;
+    
+    
+}
+
+p#stat-result {
+    margin-top: 20px;
+    color: aliceblue;
+    font-size: 24px;
+}
+
+
+
+.dialog-button-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 200px;
+}
+
+.dialog-button {
+    background-color: var(--button-color);
+    padding: 5px 30px;
+    border-radius: 15px;
+    border: 0px;
+    transition: transform 0.1s;
+}
+
+.dialog-button:hover {
+    cursor: pointer;
+    background-color: var(--button-color-hover);
+    
+    
+}
+
+.dialog-button:active {
+    cursor: pointer;
+    background-color: var(--button-color-active);
+    transform: scale(0.95,0.95);
+}
+
+.dialog-button img {
+    width: 50%;
 }
 
 button#start-button,button#start-game {
@@ -145,6 +216,10 @@ div#timer {
     button#start-button img,button#start-game img {
         width: 100px;
     
+    }
+
+    p#stat-result {
+        font-size: 18px;
     }
 }
 
