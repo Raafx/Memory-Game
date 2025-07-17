@@ -28,6 +28,16 @@ const timeResult = document.getElementById("time-result")
 const  menuButton = document.getElementById("back-to-menu")
 const  retryButton = document.getElementById("retry-game")
 
+
+let totalMoves = 0;
+let totalMisses = 0;
+
+const misessCheck = []
+
+const totalMovesResult = document.getElementById("moves-result")
+const totalMissesResult = document.getElementById("misses-result")
+
+
 function toQuizPage(){
     window.location.href = "game.html"
     
@@ -49,7 +59,31 @@ function startGame(){
     
 }
 
+function displayResult(){
+    dialogResult.showModal()
+    dialogResult.style.transform = 'scale(1.1,1.1)'
 
+    timeResult.textContent = `${minuteElement.innerText}:${secondElement.innerText}:${miliSecondElement.innerText}`
+    timeResult.style.color = 'rgb(217, 193, 86)'
+    totalMovesResult.textContent = totalMoves
+    totalMovesResult.style.color = 'rgb(217, 193, 86)'
+            
+    totalMissesResult.textContent = totalMisses
+    totalMissesResult.style.color = 'rgb(217, 193, 86)'
+            
+
+
+    menuButton.addEventListener("click", () => {
+        window.location.href = "index.html"
+    })
+    retryButton.addEventListener("click", () => {
+        window.location.href = "game.html"
+    })
+
+    setTimeout(() => {
+        dialogResult.style.transform = 'scale(1,1)'
+    },200)
+}
 
 function isFinished(){
     if(elementsObjectArray.length === 0){
@@ -61,28 +95,11 @@ function isFinished(){
             timerElement.style.transition = "transform 0.1s"
             timerElement.style.transform = "scale(1.05,1.05)"
         },100)
-        setTimeout(() => {
-            
-            dialogResult.showModal()
-            dialogResult.style.transform = 'scale(1.1,1.1)'
-
-            timeResult.textContent = `${minuteElement.innerText}:${secondElement.innerText}:${miliSecondElement.innerText}`
-            timeResult.style.color = 'rgb(217, 193, 86)'
-            
 
 
-            menuButton.addEventListener("click", () => {
-                window.location.href = "index.html"
-            })
-            retryButton.addEventListener("click", () => {
-                window.location.href = "game.html"
-            })
+        setTimeout(displayResult,1000)
 
-        },1000)
-
-        setTimeout(() => {
-            dialogResult.style.transform = 'scale(1,1)'
-        },1200)
+        
         
     
         clearInterval(Minuteinterval)
@@ -151,6 +168,8 @@ if(startGameButton){
 
 function flipElementBack(){
     console.log("flipElementBack jalan")
+
+    console.log("totalMisess: "+totalMisses)
     
     
     compareValue.forEach((elementObject) => {
@@ -168,6 +187,8 @@ function flipElementBack(){
         element.element.addEventListener("click",element.boundFn)
         
     })
+
+    console.log("total moves: "+totalMoves)
 }
 
 function flipElement(e){
@@ -176,7 +197,7 @@ function flipElement(e){
     
     
     compareValue.push(e)
-    console.log(compareValue)
+    
     count++
     
     console.log(e)
@@ -188,15 +209,35 @@ function flipElement(e){
         e.element.style.backgroundImage = `url(${e.value})`
     
     },100)
+
     
-    console.log(count)
+
+    
+    
+    console.log("count: "+count)
     if(count >= 2){
+        
+
+        
         if(compareValue[0].position === compareValue[1].position){
-            setTimeout(e.boundFnBack,500)
+            console.log("jalaann")
+            compareValue.pop()
+            console.log(compareValue)
         } 
         else {
+            
+
+            setTimeout(flipElementBack,1000)
+            totalMoves++
+            elementsObjectArray.forEach((element) => { 
+                element.element.removeEventListener("click",element.boundFn)
+            })
+
+            count = 0;
+
             if(compareValue[0].value === compareValue[1].value){
                 setTimeout(() => {
+                    console.log(`compareValueLength: ${compareValue.length}`)
                     elementsObjectArray.forEach((element,index) => {
                         if(element.position === compareValue[0].position){
                             element.element.style.transform = "scale(0.01,0.01)"
@@ -217,21 +258,24 @@ function flipElement(e){
                             elementsObjectArray.splice(index,1)
                         }
                     })
-                    compareValue.splice(0,2)
+                    
                 },800)
 
+            } else {
+                if(misessCheck.includes(compareValue[0].value) && misessCheck.includes(compareValue[1].value)){
+                    totalMisses++
+                }
             }
         }
         
-        elementsObjectArray.forEach((element) => { 
-            element.element.removeEventListener("click",element.boundFn)
-        })
         
-        count = 0;
-        
-        setTimeout(flipElementBack,800)
     }
     console.log(`length: ${elementsObjectArray.length}`)
+    if(!misessCheck.includes(e.value)){
+        misessCheck.push(e.value)
+    }
+    console.log(misessCheck)
+    
 }
 
 if(window.location.pathname === "/game.html" ){

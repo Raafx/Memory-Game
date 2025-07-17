@@ -92,11 +92,7 @@ dialog#result-dialog h1 img{
     
 }
 
-p#stat-result {
-    margin-top: 20px;
-    color: aliceblue;
-    font-size: 24px;
-}
+
 
 
 
@@ -184,6 +180,15 @@ div#timer {
     pointer-events: none;
 }
 
+div#stat-result {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    color: aliceblue;
+    font-size: 24px;
+    text-align: justify;
+}
+
 @media only screen and (max-width:600px){
     .container {
         
@@ -215,7 +220,7 @@ div#timer {
     
     }
 
-    p#stat-result {
+    div#stat-result {
         font-size: 18px;
     }
 }
