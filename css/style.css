@@ -15,6 +15,38 @@ body {
     --button-color: rgb(217, 193, 86);
     --button-color-hover: rgb(173, 162, 100);
     --button-color-active: rgb(119, 108, 50);
+    --dialog-color: rgb(49, 27, 78);
+}
+
+dialog#level-choose-dialog {
+    margin: auto auto;
+
+    flex-direction: column;
+    padding: 15px;
+    background-color: var(--dialog-color);
+    border: 5px var(--button-color) solid;
+    border-radius: 10px;
+}
+
+div#level-title {
+    margin: auto;
+}
+
+div#level-title img {
+    width: 300px;
+}
+.level-button {
+    margin: 5px 20px ;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 80px;
+    
+}
+
+.level-button-list{
+    display: flex;
+    flex-direction: column;
 }
 
 .creator {
@@ -75,7 +107,7 @@ dialog#result-dialog {
     margin:auto auto;
     width: 400px;
     padding: 30px 50px 50px 50px;
-    background-color: rgb(49, 27, 78);
+    background-color: var(--dialog-color);
     border: 5px var(--button-color) solid;
     border-radius: 20px;
     

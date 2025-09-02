@@ -22,6 +22,12 @@ let MiliSecondinterval;
 
 const dialogResult = document.getElementById("result-dialog");
 
+const levelChooseDialog = document.getElementById("level-choose-dialog");
+
+const cancelButton = document.getElementById("cancel-button")
+
+
+
 
 const timeResult = document.getElementById("time-result")
 
@@ -43,7 +49,9 @@ function toQuizPage(){
     
 }
 if(startButton){
-    startButton.addEventListener("click",toQuizPage)
+    startButton.addEventListener("click",() => levelChooseDialog.showModal())
+    cancelButton.addEventListener("click", () => levelChooseDialog.close())
+
 }
 
 function startGame(){
