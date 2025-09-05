@@ -20,12 +20,13 @@ let Minuteinterval;
 let Secondinterval;    
 let MiliSecondinterval;
 
-const dialogResult = document.getElementById("result-dialog");
-
 const levelChooseDialog = document.getElementById("level-choose-dialog");
 
-const cancelButton = document.getElementById("cancel-button")
+const dialogResult = document.getElementById("result-dialog");
 
+
+
+const cancelButton = document.getElementById("cancel-button")
 
 
 
@@ -44,19 +45,33 @@ const totalMovesResult = document.getElementById("moves-result")
 const totalMissesResult = document.getElementById("misses-result")
 
 
+if(levelChooseDialog){
+    levelChooseDialog.showModal()
+    cancelButton.addEventListener("click", () => levelChooseDialog.close())
+}
+
+
+
 function toQuizPage(){
+    
     window.location.href = "game.html"
+    console.log(levelChooseDialog)
+    
+    
     
 }
 if(startButton){
-    startButton.addEventListener("click",() => levelChooseDialog.showModal())
-    cancelButton.addEventListener("click", () => levelChooseDialog.close())
+    startButton.addEventListener("click",toQuizPage)
 
 }
 
 function startGame(){
+     
+
     startTimer()
+    console.log(elementsObjectArray)
     elementsObjectArray.forEach(element => {
+        console.log(element)
         element.boundFn = flipElement.bind(null, element)
         
         
@@ -291,6 +306,5 @@ if(window.location.pathname === "/game.html" ){
         
 }
 
-console.log(elementsObjectArray)
 
 
