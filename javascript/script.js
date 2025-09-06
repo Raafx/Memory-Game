@@ -20,7 +20,7 @@ let Minuteinterval;
 let Secondinterval;    
 let MiliSecondinterval;
 
-const levelChooseDialog = document.getElementById("level-choose-dialog");
+
 
 const dialogResult = document.getElementById("result-dialog");
 
@@ -47,7 +47,8 @@ const totalMissesResult = document.getElementById("misses-result")
 
 if(levelChooseDialog){
     levelChooseDialog.showModal()
-    cancelButton.addEventListener("click", () => levelChooseDialog.close())
+    levelChooseDialog.style.transform = "scale(1.35,1.35)"
+    
 }
 
 
@@ -55,6 +56,7 @@ if(levelChooseDialog){
 function toQuizPage(){
     
     window.location.href = "game.html"
+    
     console.log(levelChooseDialog)
     
     

@@ -1,6 +1,8 @@
 const gridElementObject = document.getElementsByClassName("grid-element")
 // const gridElements = Object.values(gridElementObject)
 
+const levelChooseDialog = document.getElementById("level-choose-dialog");
+
 const elementsObjectArray = []
 
 
@@ -24,15 +26,32 @@ preloadCardImages(value)
 
 function createGrid(gridNumbers){
     const gridElementsContainer = document.getElementsByClassName("grid-container")[0]
-    
+    console.log(gridElementsContainer)
+    console.log(gridNumbers)
     
     const gridAray = []
     for(let i = 0;i<gridNumbers;i++){
         const card = document.createElement("div")
         card.className = "grid-element"
+        
         gridElementsContainer.appendChild(card)
         gridAray.push(card)
     }
+
+    if(gridNumbers == 12 || gridNumbers == 16){
+        gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto"
+        gridAray.forEach((element) => {
+            element.style.padding = "40px"
+        })
+    } else if(gridNumbers == 24 || gridNumbers == 30){
+        gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto auto auto"
+        gridElementsContainer.style.gap = "5px"
+        gridAray.forEach((element) => {
+            element.style.padding = "35px"
+        })
+    }
+
+    gridElementsContainer.style.transform = "scale(1,1)"
 
     return gridAray
 
@@ -63,8 +82,9 @@ function getLevel(btn){
         return 0.5-Math.random()
     })
     const gridElements = createGrid(btn.value)
-    
-
+    levelChooseDialog.style.transition = "all 0.3s"
+    levelChooseDialog.style.transform = "scale(0.1,0.1)"
+    setTimeout(() => levelChooseDialog.close(),200)
 
     
     randomValueShuffle.forEach((img,index) => {
@@ -73,7 +93,7 @@ function getLevel(btn){
 
     console.log(elementsObjectArray)
     
-
+    
 
     
 

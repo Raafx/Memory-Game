@@ -20,12 +20,13 @@ body {
 
 dialog#level-choose-dialog {
     margin: auto auto;
-
     flex-direction: column;
     padding: 15px;
     background-color: var(--dialog-color);
     border: 5px var(--button-color) solid;
     border-radius: 10px;
+    transform: scale(0.5,0.5);
+    transition: all 0.3s ;
 }
 
 div#level-title {
@@ -87,9 +88,11 @@ div#title img{
     padding: 20px;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    gap: 15px;
+    gap: 10px;
     background-color: rgb(107, 100, 133);
     border-radius: 20px;
+    transition: all 0.3s;
+    transform:  scale(0.1,0.1);
 }
 
 .grid-element {
@@ -196,12 +199,12 @@ button#start-button:active,button#start-game:active {
 }
 
 div#timer {
-    margin-block: 20px;
+    margin-block: 10px;
     display: flex;
     background-color: rgb(66, 58, 97);
     color: aliceblue;
     padding: 10px 80px;
-    font-size: 45px;
+    font-size: 35px;
     border-radius: 15px;
     border: 3px rgb(221, 194, 56) solid;
     
