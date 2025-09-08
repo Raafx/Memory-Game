@@ -25,7 +25,7 @@ dialog#level-choose-dialog {
     background-color: var(--dialog-color);
     border: 5px var(--button-color) solid;
     border-radius: 10px;
-    transform: scale(0.5,0.5);
+    transform: scale(0.1,0.1);
     transition: all 0.3s ;
 }
 
@@ -236,12 +236,13 @@ div#stat-result {
     }
 
     .grid-container {
-        grid-template-columns: auto auto auto;
-        gap: 9px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 5px;
     }
 
-    .grid-elements {
-        padding: 40px;
+    .grid-element {
+        padding: 35px;
         
     }
 
@@ -258,5 +259,6 @@ div#stat-result {
     div#stat-result {
         font-size: 18px;
     }
+
 }
 

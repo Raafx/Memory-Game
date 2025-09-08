@@ -41,7 +41,11 @@ function createGrid(gridNumbers){
     if(gridNumbers == 12 || gridNumbers == 16){
         gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto"
         gridAray.forEach((element) => {
-            element.style.padding = "40px"
+            if(window.outerWidth > 450){
+                element.style.padding = "45px"
+            } 
+           
+            
         })
     } else if(gridNumbers == 24 || gridNumbers == 30){
         gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto auto auto"
@@ -49,6 +53,17 @@ function createGrid(gridNumbers){
         gridAray.forEach((element) => {
             element.style.padding = "35px"
         })
+        if(window.outerWidth < 500){
+            gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto"
+            if(gridNumbers == 30){
+                gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto auto"
+                gridElementsContainer.style.gap = "3px"
+                
+            }
+            gridAray.forEach((element) => {
+                element.style.padding = "30px"
+            })
+        } 
     }
 
     gridElementsContainer.style.transform = "scale(1,1)"
