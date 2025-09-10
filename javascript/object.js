@@ -37,8 +37,10 @@ function createGrid(gridNumbers){
         gridElementsContainer.appendChild(card)
         gridAray.push(card)
     }
-
-    if(gridNumbers == 12 || gridNumbers == 16){
+    if(gridNumbers == 12){
+        gridElementsContainer.style.gridTemplateColumns = "auto auto auto"
+    }
+    else if(gridNumbers == 16){
         gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto"
         gridAray.forEach((element) => {
             if(window.outerWidth > 450){
@@ -58,6 +60,7 @@ function createGrid(gridNumbers){
             if(gridNumbers == 30){
                 gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto auto"
                 gridElementsContainer.style.gap = "3px"
+                gridElementsContainer.style.padding = "12px"
                 
             }
             gridAray.forEach((element) => {

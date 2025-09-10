@@ -47,7 +47,10 @@ const totalMissesResult = document.getElementById("misses-result")
 
 if(levelChooseDialog){
     levelChooseDialog.showModal()
-    
+    cancelButton.addEventListener("click",() => {
+        levelChooseDialog.close()
+        window.location.href = "index.html"
+    })
     if(window.outerWidth > 600){
         levelChooseDialog.style.transform = "scale(1.35,1.35)"
         

@@ -36,18 +36,53 @@ div#level-title {
 div#level-title img {
     width: 300px;
 }
-.level-button {
+.level-button, button#cancel-button{
     margin: 5px 20px ;
     background-color: var(--button-color);
     border: none;
     border-radius: 5px;
     padding: 10px 80px;
-    
+    transition: all 0.05s;
+    color: rgb(41, 25, 92);
+    font-size: 16px;
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px rgb(234, 231, 202);
+}
+
+.level-button:hover {
+    cursor: pointer;
+    background-color: var(--button-color-hover);
+    transform: scale(1.05,1.05);
+}
+
+.level-button:active {
+    background-color: var(--button-color-active);
+    transform: scale(0.9,0.9);
 }
 
 .level-button-list{
     display: flex;
     flex-direction: column;
+}
+
+button#cancel-button {
+    border: white white black black 1px solid;
+    font-family: tahoma;
+    font-weight: bolder;
+    color: aliceblue;
+    text-shadow: 1px 1px 1px black;
+    font-size: 20px;
+    background-color: rgb(192, 91, 91);
+}
+
+button#cancel-button:hover {
+    cursor: pointer;
+    background-color: brown;
+    transform: scale(1.05,1.05);
+}
+button#cancel-button:active {
+    background-color: rgb(107, 49, 49);
+    transform: scale(0.9,0.9);
 }
 
 .creator {
@@ -89,7 +124,6 @@ div#title img{
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 10px;
-    background-color: rgb(107, 100, 133);
     border-radius: 20px;
     transition: all 0.3s;
     transform:  scale(0.1,0.1);
