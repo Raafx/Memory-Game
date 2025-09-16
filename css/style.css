@@ -143,7 +143,7 @@ div#title img{
 dialog#result-dialog {
     margin:auto auto;
     width: 400px;
-    padding: 30px 50px 50px 50px;
+    padding: 30px 50px 40px 50px;
     background-color: var(--dialog-color);
     border: 5px var(--button-color) solid;
     border-radius: 20px;
@@ -169,7 +169,7 @@ dialog#result-dialog h1 img{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 200px;
+    margin-top: 80px;
 }
 
 .dialog-button {

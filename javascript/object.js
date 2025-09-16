@@ -38,7 +38,7 @@ function createGrid(gridNumbers){
         gridAray.push(card)
     }
     if(gridNumbers == 12){
-        gridElementsContainer.style.gridTemplateColumns = "auto auto auto"
+        gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto"
     }
     else if(gridNumbers == 16){
         gridElementsContainer.style.gridTemplateColumns = "auto auto auto auto"
@@ -81,7 +81,15 @@ function createGrid(gridNumbers){
 const valueLength = document.getElementsByClassName("level-button")
 
 
-
+function shuffleValue(randomValuePicker){
+    randomValuePicker.forEach(value => {
+        let randomIndexPicker = Math.floor(Math.random()*randomValuePicker.length-1)
+        let randomValue = randomValuePicker.splice(randomIndexPicker,1)[0]
+        randomValuePicker.push(randomValue)
+    })
+    console.log(randomValuePicker)
+    return randomValuePicker
+}
 
 
 function getLevel(btn){
@@ -96,9 +104,7 @@ function getLevel(btn){
         value.splice(randomIndexPicker,1)
     }
     console.log(randomValuePicker)
-    const randomValueShuffle = randomValuePicker.sort(() => {
-        return 0.5-Math.random()
-    })
+    const randomValueShuffle = shuffleValue(randomValuePicker)
     const gridElements = createGrid(btn.value)
     levelChooseDialog.style.transition = "all 0.3s"
     levelChooseDialog.style.transform = "scale(0.1,0.1)"
