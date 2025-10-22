@@ -97,6 +97,7 @@ function getLevel(btn){
     
     const randomValuePicker = []
     console.log(btn.value)
+
     for(let x = 0;x<btn.value;x+=2){
         let randomIndexPicker = Math.floor(Math.random()*value.length) 
         randomValuePicker.push(value[randomIndexPicker])
@@ -104,8 +105,10 @@ function getLevel(btn){
         value.splice(randomIndexPicker,1)
     }
     console.log(randomValuePicker)
+
     const randomValueShuffle = shuffleValue(randomValuePicker)
     const gridElements = createGrid(btn.value)
+
     levelChooseDialog.style.transition = "all 0.3s"
     levelChooseDialog.style.transform = "scale(0.1,0.1)"
     setTimeout(() => levelChooseDialog.close(),200)
@@ -124,8 +127,15 @@ function getLevel(btn){
     
 }
 
+function getBtnValue(btnElement){
+    return btnElement.value
+}
+
 for(let btn of valueLength){
-    btn.addEventListener("click",() => getLevel(btn))
+    btn.addEventListener("click",() => {
+        getLevel(btn)
+        sessionStorage.setItem("level",JSON.stringify(btn.value))
+    })
 }
 
 

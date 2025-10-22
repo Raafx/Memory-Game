@@ -31,6 +31,7 @@ const cancelButton = document.getElementById("cancel-button")
 
 
 const timeResult = document.getElementById("time-result")
+const bestScoreResult = document.getElementById("best-time")
 
 const  menuButton = document.getElementById("back-to-menu")
 const  retryButton = document.getElementById("retry-game")
@@ -76,6 +77,26 @@ if(startButton){
 
 }
 
+function getScore(){
+    try{
+        const scoreData = JSON.parse(localStorage.getItem("timeScore"))
+        if(scoreData === null){
+            return []
+        } else {
+            return scoreData
+        }
+    }
+    catch(error){
+        return []
+    }
+}
+
+function setNewScore(timerScore){
+    const listScore = getScore()
+    listScore.push(timerScore)
+    localStorage.setItem("timeScore",JSON.stringify(listScore))
+}
+
 function startGame(){
      
 
@@ -93,10 +114,38 @@ function startGame(){
     
 }
 
+function getBestScore(){
+    console.log("getBestScore Jalan")
+    const levelNow = JSON.parse(sessionStorage.getItem("level"))
+    const listScore = getScore()
+    
+    const listScoreLevelNow = listScore.filter((score) => score.level == levelNow)
+
+    listScoreLevelNow.forEach(element => {
+        console.log(element.second)
+    })
+
+    listScoreLevelNow.sort((a,b) => a.miliSecond - b.miliSecond)
+    listScoreLevelNow.sort((a,b) => a.second - b.second)
+    listScoreLevelNow.sort((a,b) => a.minute - b.minute)
+
+    console.log(listScoreLevelNow)
+
+    return listScoreLevelNow[0]
+
+}
+
 function displayResult(){
     dialogResult.showModal()
     dialogResult.style.transform = 'scale(1.1,1.1)'
 
+    const bestScore = getBestScore()
+
+    bestScoreResult.textContent = `${bestScore.minute}:${bestScore.second}:${bestScore.miliSecond}`
+    bestScoreResult.style.color = 'rgb(217, 193, 86)'
+    bestScoreResult.style.fontWeight = "bold"
+
+    
     timeResult.textContent = `${minuteElement.innerText}:${secondElement.innerText}:${miliSecondElement.innerText}`
     timeResult.style.color = 'rgb(217, 193, 86)'
     totalMovesResult.textContent = totalMoves
@@ -139,6 +188,15 @@ function isFinished(){
         clearInterval(Minuteinterval)
         clearInterval(Secondinterval)
         clearInterval(MiliSecondinterval)
+
+        const timerData = {
+            level: JSON.parse(sessionStorage.getItem("level")),
+            minute:timerMinute,
+            second:timerSecond,
+            miliSecond:timerMiliSecond
+        }
+
+        setNewScore(timerData)
     }
 }
 
